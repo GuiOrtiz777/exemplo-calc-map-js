@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calc map</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<select name="numeros" id="calc">
+	    <option value="1">1</option>
+	    <option value="2">2</option>
+	    <option value="3">3</option>
+	    <option value="4">4</option>
+	    <option value="5">5</option>
+	    <option value="6">6</option>
+	    <option value="7">7</option>
+	    <option value="8">8</option>
+	    <option value="9">9</option>
+	    <option value="10">10</option>
+	</select>
+	<button>Start</button>
+</body>
+<script>
+	var myMap = new Map();
+
+	$('#calc').change(function(){
+	  var numero = $('option:selected').val();
+	  start(numero)
+	});
+
+	function start(numero){
+	  setTimeout(function(){
+	    multiplica(numero);
+	    console.log(numero);
+	    imprime();
+	  },100);
+	}
+
+	function multiplica (numero){
+	  for (var i = 0; i <= 100; i++) {
+	    myMap.set(i,(i*numero));
+	  }
+	}
+
+	function imprime() {
+	  for (var [key, value] of myMap.entries()){
+	    console.log(key + '=' + value);
+	  }
+	}
+</script>
+</html>
